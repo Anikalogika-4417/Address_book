@@ -90,6 +90,7 @@
     <ClCompile Include="ContactDelegate.cpp" />
     <ClCompile Include="ContactModel.cpp" />
     <ClCompile Include="ContactView.cpp" />
+    <ClCompile Include="Helper.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +104,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ContactView.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Helper.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

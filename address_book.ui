@@ -66,7 +66,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QListView" name="contacts_listView"/>
+        <widget class="ContactView" name="contacts_listView"/>
        </item>
        <item alignment="Qt::AlignRight">
         <widget class="QPushButton" name="contacts_add_button">
@@ -85,7 +85,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QWidget" name="widget_2" native="true">
+     <widget class="QWidget" name="info_widget" native="true">
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <property name="leftMargin">
         <number>0</number>
@@ -279,6 +279,13 @@
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>ContactView</class>
+   <extends>QListView</extends>
+   <header>contactview.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="address_book.qrc"/>
  </resources>

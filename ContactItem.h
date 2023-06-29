@@ -2,6 +2,8 @@
 
 #include <QObject>
 #include <QRect>
+#include <QUuid>
+
 
 class ContactItem : public QObject
 {
@@ -17,7 +19,7 @@ public:
 		contact_phone(std::move(contact_phone)),
 		contact_work(std::move(contact_work))
 	{
-		contact_id = 0;
+		contact_id = QUuid::createUuid().toString();
 	};
 
 	[[nodiscard]] auto getContactId() { return contact_id; };
@@ -44,7 +46,7 @@ public:
 	auto setContactRoomCurrBox(const QRect val) { contact_current_box = val; }
 
 private:
-	int			contact_id{0};
+	QString		contact_id{};
 	QString		contact_name{};
 	QString		contact_nickname{};
 	QString		contact_phone{};
