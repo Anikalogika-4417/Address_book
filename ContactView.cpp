@@ -58,7 +58,7 @@ void ContactView::mouseMoveEvent(QMouseEvent* event)
 		{
 			if (_last_index.isValid())
 			{
-				if (const auto& contact = _last_index.data(ContactModel::ChatRole).value<contactItemPtr>())
+				if (const auto& contact = _last_index.data(ContactModel::ContactRole).value<contactItemPtr>())
 				{
 					contact->setContactCurrRow(_last_index.row());
 					contact->setContactIsHovered(false);
@@ -69,7 +69,7 @@ void ContactView::mouseMoveEvent(QMouseEvent* event)
 		_last_index = item_index;
 		if (_last_index.isValid())
 		{
-			const auto contact = _last_index.data(ContactModel::ChatRole).value<contactItemPtr>();
+			const auto contact = _last_index.data(ContactModel::ContactRole).value<contactItemPtr>();
 			contact->setContactIsHovered(true);
 			emit model->dataChanged(_last_index, _last_index);
 		}
@@ -84,7 +84,7 @@ void ContactView::mouseDoubleClickEvent(QMouseEvent* event)
 		auto const& item_index = indexAt(event->pos());
 		if (item_index.isValid())
 		{
-			const auto& contact = item_index.data(ContactModel::ChatRole).value<contactItemPtr>();
+			const auto& contact = item_index.data(ContactModel::ContactRole).value<contactItemPtr>();
 			const auto& contact_rects = contact->getContactRoomCurrBox();
 			if (contact_rects.contains(event->pos()))
 			{

@@ -40,7 +40,7 @@ QVariant ContactModel::data(const QModelIndex& index, int role) const
         case Qt::SizeHintRole:
             return QSize{ 200, 200 };
 
-        case ChatRole:
+        case ContactRole:
             return QVariant::fromValue(contact);
 
         default:

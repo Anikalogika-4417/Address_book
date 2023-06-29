@@ -1,6 +1,8 @@
 #pragma once
 
 #include <QItemDelegate>
+#include <QPainter>
+
 
 #include "ContactModel.h"
 #include "ContactItem.h"

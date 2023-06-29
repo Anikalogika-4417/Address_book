@@ -15,7 +15,7 @@ class ContactModel : public QAbstractListModel
 public:
 	enum Role
 	{
-		ChatRole = Qt::UserRole,
+		ContactRole = Qt::UserRole,
 	};
 
 	explicit ContactModel(QObject* parent = Q_NULLPTR);
