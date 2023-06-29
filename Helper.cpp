@@ -1,7 +1,7 @@
 #include "Helper.h"
 
 Helper::Helper() : 
-	file(QCoreApplication::applicationDirPath() + "/book.txt")
+	file(QCoreApplication::applicationDirPath() + "/book.json")
 {
 }
 
@@ -18,32 +18,51 @@ QSharedPointer<Helper> Helper::instance()
 
 void Helper::AddLine(const contactItemPtr new_contact_)
 {
-    if (!file.open(QIODevice::Append | QIODevice::Text))
-    {
-        emit FileEroor("Failed to open file for writing");
-        return;
-    }
 
-    QTextStream out(&file);
-
-    auto a = file.fileName();
-    QStringList line;
+    QJsonObject jsonObject;
+    //jsonObject["id"] = new_contact_->getContactId();
+    jsonObject["name"] = new_contact_->getContactName();
+    jsonObject["nickname"] = new_contact_->getContactNickname();
+    jsonObject["phone"] = new_contact_->getContactPhone();
+    jsonObject["work"] = new_contact_->getContactWork();
 
     if (!new_contact_->getContactId().isEmpty() && !new_contact_->getContactName().isEmpty() && !new_contact_->getContactPhone().isEmpty()) {
-        line << new_contact_->getContactId();
-        line << new_contact_->getContactName();
-        line << new_contact_->getContactPhone();
-        line << new_contact_->getContactWork();
+
+        if (file.open(QIODevice::ReadWrite | QIODevice::Text))
+        {
+            QByteArray fileData = file.readAll();
+
+            QJsonDocument existingJsonDocument = QJsonDocument::fromJson(fileData);
+
+            if (!existingJsonDocument.isNull() && existingJsonDocument.isObject()) {
+                QJsonObject existingJsonObject = existingJsonDocument.object();
+                existingJsonObject[new_contact_->getContactId()] = jsonObject;
+                QJsonDocument updatedJsonDocument(existingJsonObject);
+                file.seek(0);
+                file.write(updatedJsonDocument.toJson());
+            }
+            else
+            {
+                file.seek(0);
+                QJsonObject newJsonObject;
+                newJsonObject[new_contact_->getContactId()] = jsonObject;
+                QJsonDocument jsonDocument(newJsonObject);
+                file.write(jsonDocument.toJson());
+            }
+            file.close();
+            emit ContactAdded(new_contact_);
+            return;
+        }
+        else
+        {
+            emit FileEroor("Failed to create or update data");
+            return;
+        }
     }
     else {
-        emit FileEroor("Not all fileds filled");
+        emit FileEroor("Not all fileds filled!!!");
         return;
     }
-
-    out << line.join(",") << "\n";
-    file.close();
-    emit ContactAdded(new_contact_);
-
 }
 
 contactItemPtr Helper::ReadLine(const QString&)

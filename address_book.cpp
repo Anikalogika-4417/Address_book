@@ -37,6 +37,7 @@ void Address_book::onAddButtonCliecked()
     ui->phone_edit->clear();
     ui->work_edit->clear();
     ui->info_edit_save_button->setText(SAVE_BUTTON);
+    ui->info_lable->setText("New contact:");
 }
 
 void Address_book::onSaveEditButtonClicked()
@@ -48,8 +49,6 @@ void Address_book::onSaveEditButtonClicked()
             return;
         }
 
-        
-        //TODO send to saving to the file
         emit newContact(contactItemPtr
             { new ContactItem
                 {
@@ -76,8 +75,10 @@ void Address_book::ContactAddedError(const QString& eroor_)
 
 void Address_book::ContactAdded(const contactItemPtr new_contact_)
 {
-
+    QMessageBox::information(this, "Success", "Contact created successfully!");
     emit showContact(QVariant::fromValue<contactItemPtr>(new_contact_));
+    ui->info_edit_save_button->setText(EDIT_BUTTON);
+    ui->info_lable->setText("Contact info:");
 }
 
 

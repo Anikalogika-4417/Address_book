@@ -2,6 +2,9 @@
 
 #include <QFile>
 #include <QCoreApplication>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
 
 #include "ContactItem.h"
 
