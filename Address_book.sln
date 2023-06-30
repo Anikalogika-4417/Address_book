@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Address_book", "Address_book\Address_book.vcxproj", "{33450260-4BEC-4BEB-890B-8A0B8203CD12}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33450260-4BEC-4BEB-890B-8A0B8203CD12}.Debug|x64.ActiveCfg = Debug|x64
+		{33450260-4BEC-4BEB-890B-8A0B8203CD12}.Debug|x64.Build.0 = Debug|x64
+		{33450260-4BEC-4BEB-890B-8A0B8203CD12}.Release|x64.ActiveCfg = Release|x64
+		{33450260-4BEC-4BEB-890B-8A0B8203CD12}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6BB337AF-9D23-49AB-AC79-473E21F626BB}
+	EndGlobalSection
+EndGlobal
